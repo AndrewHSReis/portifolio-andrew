@@ -8,19 +8,22 @@ import { useState } from 'react';
 
 function Contador(){
     const [contador,setContador] = useState(0);
+    const [formQtd,setFormQtd] = useState();
+    console.log(formQtd);
 
     function adicionarContador(){
-        setContador(contador + 1);
+        setContador(contador + parseInt(formQtd));
     }
 
     function subtrairContador(){
-        setContador(contador - 1);
+        setContador(contador - parseInt(formQtd));
     }
 
     return (
         <div>
             <h3><CapsLock>Contador Teste</CapsLock></h3>
             <div>
+                <form><label>Insira a quantidade: <input type='text' value={formQtd} onChange={e =>setFormQtd(e.target.value)}/></label></form>
                 <div>Resultado = {contador}</div>
                 <button onClick={adicionarContador}><CapsLock>Adicionar</CapsLock></button>
                 <button onClick={subtrairContador}><CapsLock>Subitrair</CapsLock></button>
